@@ -1,7 +1,3 @@
 rvm_trust_rvmrcs_flag=1
 
-if [[ -s "/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website" ]] ; then
-  . "/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website"
-else
-  rvm --create use  "1.9.3@sucurilabs-website"
-fi
+rvm use  "1.9.3@sucurilabs-website"
