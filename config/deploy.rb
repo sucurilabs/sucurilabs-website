@@ -39,6 +39,8 @@ set :default_environment, {
     'BUNDLE_PATH' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems' # If using bundler.
 }
 
+
+
 namespace :deploy do
   desc "restarting"
   task :restart do
