@@ -6,7 +6,7 @@ set :application, "sucurilabs.net"
 set :domain, "sucurilabs.net"
 set :environment, "production"
 set :branch, "master"
-set :deploy_to, "/var/www/#{aplication}"
+set :deploy_to, "/var/www/#{application}"
 
 role :app, domain
 role :web, domain
