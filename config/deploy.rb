@@ -32,11 +32,11 @@ set :user, "deployerbot"
 set :keep_releases, 5
 
 set :default_environment, {
-    'PATH' => "/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems/bin:$PATH",
+    'PATH' => "/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems/bin:/usr/local/rvm/bin:$PATH",
     'RUBY_VERSION' => 'ruby 1.9.3',
     'GEM_HOME' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems',
     'GEM_PATH' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems:/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems',
-    'BUNDLE_PATH' => '//usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems' # If using bundler.
+    'BUNDLE_PATH' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems' # If using bundler.
 }
 
 namespace :deploy do
@@ -54,6 +54,24 @@ namespace :deploy do
   task :trust_rvmrc do
     run "rvm rvmrc trust #{release_path}"
   end
+  desc "Install bundler"
+  task :bundle_install do
+    begin
+      run "bundle install"
+    rescue
+      gem_install_bundler
+    end
+  end
+
+  desc "installs Bundler if it is not already installed"
+  task :gem_install_bundler, :roles => :app do
+    run "cd #{deploy_to}/current; gem install bundler && bundle install"
+  end
 end
 
+task :ruby_version, :roles => :app do
+  run "ruby -v"
+  run "source /etc/profile; rvm list"
+  run "rvm list"
+end
 after 'deploy:symlink', 'deploy:symlink_vendor_to_shared_vendor', 'deploy:trust_rvmrc'
