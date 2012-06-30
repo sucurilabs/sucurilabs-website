@@ -24,6 +24,7 @@ gem 'rvm-capistrano'
 
 gem 'jquery-rails'
 gem 'execjs'
+gem 'highline'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
