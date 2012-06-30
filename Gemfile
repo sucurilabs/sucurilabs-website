@@ -19,9 +19,9 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'rvm-capistrano'
-
+group :development do
+  gem 'rvm-capistrano'
+end
 gem 'jquery-rails'
 gem 'execjs'
 gem 'highline'
