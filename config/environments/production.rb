@@ -65,3 +65,7 @@ SucurilabsWebsite::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+ENV['GEM_HOME']='/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems' # take note for webapp2 it will be /usr/local/rvm/gems/ruby-1.9.2-p290@webapp2/gems
+ENV['GEM_PATH']='/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems:/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems'
+ENV['PATH']='/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/bin:$PATH'
+ENV['MY_RUBY_HOME']='/usr/local/rvm/wrappers/ruby-1.9.3-p194@sucurilabs-website/ruby'
