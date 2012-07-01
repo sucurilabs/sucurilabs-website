@@ -1,6 +1,7 @@
 #this part goes in the deploy.rb file inside the config in your rails app
 
 require 'bundler/capistrano'
+
 set :application, "sucurilabs.net"
 
 set :domain, "sucurilabs.net"
@@ -38,7 +39,10 @@ set :default_environment, {
     'GEM_PATH' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems:/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems',
     'BUNDLE_PATH' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems' # If using bundler.
 }
-
+set :bundle_gemfile,      "Gemfile"
+  set :bundle_dir,          fetch(:shared_path)+"/bundle"
+  set :bundle_flags,        "--deployment --quiet"
+  set :bundle_without,      [:development, :test]
 
 
 namespace :deploy do
