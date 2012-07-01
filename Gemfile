@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source :gemcutter
 
 gem 'rails', '3.2.6'
 
