@@ -73,6 +73,12 @@ namespace :deploy do
   task :gem_install_bundler, :roles => :app do
     run "cd #{deploy_to}/current; gem install bundler && bundle install"
   end
+  namespace :assets do
+  desc "Compile assets"
+  task :precompile, :roles => :app do
+    run "cd #{release_path} && bundle install && rake RAILS_ENV=#{rails_env} assets:precompile"
+  end
+end
 end
 
 task :ruby_version, :roles => :app do
