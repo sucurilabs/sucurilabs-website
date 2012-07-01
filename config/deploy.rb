@@ -60,25 +60,6 @@ namespace :deploy do
   task :trust_rvmrc do
     run "rvm rvmrc trust #{release_path}"
   end
-  desc "Install bundler"
-  task :bundle_install do
-    begin
-      run "bundle install"
-    rescue
-      gem_install_bundler
-    end
-  end
-
-  desc "installs Bundler if it is not already installed"
-  task :gem_install_bundler, :roles => :app do
-    run "cd #{deploy_to}/current; gem install bundler && bundle install"
-  end
-  namespace :assets do
-  desc "Compile assets"
-  task :precompile, :roles => :app do
-    run "cd #{release_path} && bundle install && rake RAILS_ENV=#{rails_env} assets:precompile"
-  end
-end
 end
 
 task :ruby_version, :roles => :app do
@@ -86,4 +67,12 @@ task :ruby_version, :roles => :app do
   run "source /etc/profile; rvm list"
   run "rvm list"
 end
-after 'deploy:symlink', 'deploy:symlink_vendor_to_shared_vendor', 'deploy:trust_rvmrc'
+
+desc "install the necessary prerequisites"
+task :bundle_install, :roles => :app do
+  run "cd #{release_path} && bundle install"
+end
+
+after "deploy:update_code", :bundle_install
+after 'deploy:symlink', 'deploy:symlink_vendor_to_shared_vendor'
+after :deploy, 'deploy:trust_rvmrc'
