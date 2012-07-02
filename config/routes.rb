@@ -1,4 +1,10 @@
 SucurilabsWebsite::Application.routes.draw do
+  get "team/index"
+
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  devise_for :users
+
   get "home/index"
 
   # The priority is based upon order of creation:

@@ -1,0 +1,17 @@
+.5grid
+  - @people.each do |person|
+    .3u
+      %section
+        %a{ :href => "#", :class => "bordered-feature-image" }
+          %img{ :src => "images/pic01.jpg", :alt => "" }
+        %h2 
+          = person.name
+        %br
+        %h3 Skils
+        %p
+          = simple_format person.skils
+        %br
+        %h3 Portfolio
+        %p
+          = simple_format person.portfolio
+
