@@ -22,7 +22,7 @@ group :assets do
 end
 group :development do
   gem 'haml-rails'
-  gem 'rvm-capistrano'
+  #gem 'rvm-capistrano'
 end
 
 

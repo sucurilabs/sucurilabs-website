@@ -33,7 +33,7 @@ set :user, "deployerbot"
 set :keep_releases, 5
 
 set :default_environment, {
-    'PATH' => "/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems/bin:/usr/local/rvm/bin:$PATH",
+    'PATH' => "/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bin:/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems/bin:/usr/local/rvm/bin:$PATH",
     'RUBY_VERSION' => 'ruby 1.9.3',
     'GEM_HOME' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems',
     'GEM_PATH' => '/usr/local/rvm/gems/ruby-1.9.3-p194@sucurilabs-website/gems:/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems',
